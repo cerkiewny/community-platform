@@ -281,7 +281,10 @@ jobs:
           command: yarn workspaces focus one-army-community-platform
       - run:
           # NOTE - run-in-band to try reduce memory leaks (https://github.com/facebook/jest/issues/7874)
-          command: yarn build:components && yarn run test:unit:ci && yarn run test:components
+          command: yarn build:components && yarn run test:unit:ci && yarn run
+      - store_artifacts:
+          path: coverage
+
   build:
     <<: *docker_matrix
     environment:
